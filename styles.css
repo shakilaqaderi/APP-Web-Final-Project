@@ -82,9 +82,12 @@ main iframe{
     height: 200px;
 }
 
-/* ================= DRAMA ================= */
+
+
+/* ================= DRAMA (FIXED) ================= */
 .container{
-    width: 950px;
+    max-width: 950px;
+    width: 95%;
     margin: auto;
     border: 1px solid #bda75f;
     text-align: center;
@@ -99,40 +102,56 @@ main iframe{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    gap: 15px;
 }
 
+/* کارت */
 .team-members{
     width: 190px;
     height: 250px;
     margin: 10px;
-    padding: 10px;
     background-color: #004332;
     border-radius: 10px;
+    overflow: hidden;
+    position: relative;
 }
 
+/* تصویر */
 .team-members img{
     width: 100%;
-    height: 250px;
-    object-fit: cover; /* 🔥 FIX IMAGE */
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
+/* متن روی عکس (اصلاح شده) */
 .team-members p{
-    position: relative;
-    top: -277px;
-    padding: 30px 16px;
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    padding: 15px;
     font-size: 14px;
-    background-color: #004332;
+    background: rgba(0, 67, 50, 0.9);
     color: #a89554;
-    height: 200px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    transition: 0.3s ease;
 }
 
+/* hover درست */
+.team-members:hover p{
+    opacity: 1;
+}
 
 .container h3{
     color: #bda75f;
     font-family: Simple Brush Script;
 }
 
-/* 🔥 FIX WATCH LINK */
 .container h6 a{
     text-decoration: none;
     color:#bda75f;
@@ -141,7 +160,6 @@ main iframe{
     padding: 7px 25px;
     display: inline-block;
 }
-
 /* ================= ABOUT ================= */
 .about{
     width: 950px;
