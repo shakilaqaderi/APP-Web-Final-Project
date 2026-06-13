@@ -108,6 +108,7 @@ main iframe{
     background-color: #004332;
     border-radius: 10px;
     overflow: hidden;
+    height: auto;
 }
 
 .team-members img{
