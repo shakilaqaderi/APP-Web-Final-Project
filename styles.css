@@ -108,7 +108,6 @@ main iframe{
     padding: 10px;
     background-color: #004332;
     border-radius: 10px;
-    overflow: hidden;
 }
 
 .team-members img{
@@ -118,7 +117,6 @@ main iframe{
 }
 
 .team-members p{
-    visibility: hidden;
     position: relative;
     top: -277px;
     padding: 30px 16px;
@@ -151,7 +149,6 @@ main iframe{
 .about{
     width: 950px;
     margin: auto;
-    border: 1px solid #bda75f;
     display: flex;
 }
 
