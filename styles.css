@@ -126,9 +126,6 @@ main iframe{
     height: 200px;
 }
 
-.team-members:hover p{
-    visibility: visible;
-}
 
 .container h3{
     color: #bda75f;
