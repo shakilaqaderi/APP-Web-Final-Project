@@ -103,7 +103,6 @@ main iframe{
 
 .team-members{
     width: 190px;
-    height: 250px;
     margin: 10px;
     padding: 10px;
     background-color: #004332;
@@ -113,19 +112,19 @@ main iframe{
 
 .team-members img{
     width: 100%;
-    height: 250px;
-    object-fit: cover; /* 🔥 FIX IMAGE */
+    height: auto;   /* 🔥 FIX */
+    display: block;
+    object-fit: cover;
 }
 
 .team-members p{
     visibility: hidden;
     position: relative;
-    top: -277px;
-    padding: 30px 16px;
+    top: -20px;
+    padding: 20px 10px;
     font-size: 14px;
     background-color: #004332;
     color: #a89554;
-    height: 200px;
 }
 
 .team-members:hover p{
@@ -247,7 +246,6 @@ footer{
 
     .team-members{
         width: 90%;
-        height: auto;
     }
 
     .about .image,
