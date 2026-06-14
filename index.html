@@ -1,64 +1,354 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet">
-</head>
-<body>
-    <!--part of navbar-->
-    <div class="menu">
-        <h1>Ji Chang Wook</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="drama-series.html">Drama Series</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-        </nav>
-    </div>
-    <!--end navbar-->
-    <br><br><br><br>
-    <!--part of home-->
-    <div class="image-home">
-        <h1>
-            WELCOME! <br>
-            I'M JICHANGWOOK
-        </h1>
-    </div>
-    <br>
-    <main>
-         <iframe width="320" height="200" src="https://www.youtube.com/embed/aY8QmExZrlY?si=Rd-HsrIBkCq2LeBT" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-         <iframe width="320" height="200" src="https://www.youtube.com/embed/6xPCqDPkEvQ?si=MmWynNj0A1esuaAO" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-         <iframe width="320" height="200" src="https://www.youtube.com/embed/yesM8OouKnE?si=VvxMx4c7-QgCxtFi" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-    </main>
-    <!--end home-->
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ji Chang Wook Fan Page</title>
 
-    <!--part of footer-->
-    <footer>
-        <div>
-            <h3>LOCATION</h3>
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+        <style>
+            /* RESET */
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: 'Inter', sans-serif;
+                background: #f6f5f2;
+                color: #1f1f1f;
+                line-height: 1.6;
+            }
+
+            /* HEADER */
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px 60px;
+                background: rgba(255,255,255,0.92);
+                backdrop-filter: blur(10px);
+                border-bottom: 1px solid #e8e6e1;
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+            }
+
+            .logo {
+                font-family: 'Playfair Display', serif;
+                font-size: 22px;
+            }
+
+            /* DESKTOP NAV */
+            .desktop-nav {
+                display: flex;
+                gap: 25px;
+            }
+
+            .desktop-nav a {
+                text-decoration: none;
+                font-size: 15px;
+                color: #222;
+                transition: 0.3s;
+            }
+
+            .desktop-nav a:hover {
+                color: #a58f6f;
+            }
+
+            /* MOBILE MENU */
+            #menu-toggle {
+                display: none;
+            }
+
+            .menu-btn {
+                font-size: 28px;
+                cursor: pointer;
+                display: none;
+            }
+
+            /* OVERLAY */
+            .overlay {
+                position: fixed;
+                inset: 0;
+                background: rgba(0,0,0,0.35);
+                opacity: 0;
+                visibility: hidden;
+                transition: 0.3s ease;
+            }
+
+            /* DRAWER */
+            .drawer {
+                position: fixed;
+                top: 0;
+                right: -300px;
+                width: 260px;
+                height: 100vh;
+                background: rgba(255,255,255,0.95);
+                backdrop-filter: blur(18px);
+                box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+                display: flex;
+                flex-direction: column;
+                padding: 70px 25px 25px;
+                gap: 15px;
+                transition: 0.4s cubic-bezier(0.77,0,0.175,1);
+            }
+
+            .close-btn {
+                position: absolute;
+                top: 15px;
+                right: 15px;
+                font-size: 22px;
+                cursor: pointer;
+            }
+
+            .drawer a {
+                text-decoration: none;
+                font-size: 15px;
+                color: #222;
+                padding: 10px;
+                border-radius: 8px;
+                transition: 0.25s;
+            }
+
+            .drawer a:hover {
+                background: #f3f1ec;
+                transform: translateX(5px);
+            }
+
+            /* OPEN STATE */
+            #menu-toggle:checked ~ .drawer {
+                right: 0;
+            }
+
+            #menu-toggle:checked ~ .overlay {
+                opacity: 1;
+                visibility: visible;
+            }
+
+            /* HERO */
+            .hero {
+                padding: 60px 20px 20px;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-family: 'Playfair Display', serif;
+                font-size: 52px;
+                margin-bottom: 5px;
+            }
+
+            .hero p {
+                font-size: 15px;
+                color: #666;
+            }
+
+            /* SUB TEXT */
+            .sub-text {
+                text-align: center;
+                padding: 10px 20px 40px;
+            }
+
+            .sub-text p {
+                font-size: 14px;
+                color: #777;
+                max-width: 520px;
+                margin: 0 auto;
+                line-height: 1.8;
+            }
+
+            /* VIDEOS */
+            .videos {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+                padding: 40px 60px;
+            }
+
+            .videos iframe {
+                width: 100%;
+                height: 220px;
+                border-radius: 10px;
+                border: none;
+                transition: 0.3s;
+            }
+
+            .videos iframe:hover {
+                transform: scale(1.03);
+            }
+
+            /* FOOTER */
+            footer {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                padding: 40px 60px;
+                background: white;
+                border-top: 1px solid #e8e6e1;
+            }
+
+            footer h3 {
+                font-family: 'Playfair Display', serif;
+                font-size: 16px;
+                margin-bottom: 10px;
+            }
+
+            footer p,
+            footer a {
+                font-size: 13px;
+                color: #555;
+                text-decoration: none;
+                display: block;
+                margin-top: 5px;
+            }
+
+            .social-icons {
+                display: flex;
+                gap: 12px;
+                margin-top: 8px;
+            }
+
+            .icon {
+                width: 40px;
+                height: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                background: #f3f1ec;
+                border-radius: 10px;
+                font-size: 16px;
+                color: #222;
+                text-decoration: none;
+                transition: 0.3s;
+                box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+            }
+
+            .icon:hover {
+                transform: translateY(-4px) scale(1.08);
+                background: #e9e3d8;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+            }
+
+            @media (max-width: 480px) {
+                .social-icons {
+                    justify-content: center;
+                }
+            }
+
+            @media (max-width: 768px) {
+                .header {
+                    padding: 20px;
+                }
+
+                .desktop-nav {
+                    display: none;
+                }
+
+                .menu-btn {
+                    display: block;
+                }
+
+                .hero h1 {
+                    font-size: 38px;
+                }
+
+                .videos {
+                    grid-template-columns: 2fr;
+                    padding: 20px;
+                }
+
+                footer {
+                    grid-template-columns: 1fr 1fr;
+                    padding: 30px;
+                }
+            }
+
+            @media (max-width: 480px) {
+                .hero h1 {
+                    font-size: 30px;
+                }
+
+                .videos {
+                    grid-template-columns: 1fr;
+                }
+
+                footer {
+                    grid-template-columns: 1fr;
+                    text-align: center;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+
+        <header class="header">
+            <div class="logo">Ji Chang Wook</div>
+
+            <nav class="desktop-nav">
+                <a href="index.html">Home</a>
+                <a href="drama-series.html">Drama Series</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+
+            <input type="checkbox" id="menu-toggle">
+
+            <label for="menu-toggle" class="menu-btn">☰</label>
+            <label for="menu-toggle" class="overlay"></label>
+
+            <nav class="drawer">
+                <label for="menu-toggle" class="close-btn">✕</label>
+
+                <a href="index.html">Home</a>
+                <a href="drama-series.html">Drama Series</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <h1>Ji Chang Wook</h1>
+            <p>Actor • Model • Artist</p>
+        </section>
+
+        <section class="sub-text">
             <p>
-                Glorious Entertainment <br>
-                (Talent Management Company) <br>
-                4th Floor <br>
-                Gangnam-gu Seoul, 06040
+                Ji Chang Wook is a talented Korean actor known for his emotional performances,
+                strong screen presence, and inspiring journey in the entertainment industry.
             </p>
-        </div>
-        <div>
-            <h3>CONTACT</h3>
-            <p class="p1">+82748278164</p>
-            <p class="p1">jichangwook@gamil.com</p>
-        </div>
-        <div>
-            <h3>FOLLOW US</h3>
-            <a href="https://instagram.com/jichangwook/">Instagram</a>
-            <a href="https://www.facebook.com/ACTORJCW.OFFICIAL">Facebook</a>
-            <a href="https://twitter.com/jichangwook">X</a>
-        </div>
-    </footer>
-</body>
+        </section>
+
+        <main class="videos">
+            <iframe src="https://www.youtube.com/embed/aY8QmExZrlY" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/6xPCqDPkEvQ" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/yesM8OouKnE" allowfullscreen></iframe>
+        </main>
+
+        <footer>
+            <div>
+                <h3>Location</h3>
+                <p>Seoul, Korea</p>
+            </div>
+
+            <div>
+                <h3>Contact</h3>
+                <p>+82 748 278 164</p>
+                <p>jichangwook@email.com</p>
+            </div>
+
+            <div>
+                <h3>Follow</h3>
+
+                <div class="social-icons">
+                    <a href="#" class="icon"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="icon"><i class="fa-brands fa-x-twitter"></i></a>
+                </div>
+            </div>
+        </footer>
+
+    </body>
 </html>
